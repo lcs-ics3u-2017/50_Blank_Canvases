@@ -13,18 +13,50 @@ import Cocoa
 import PlaygroundSupport
 
 // Create canvas
-let canvas = Canvas(width: 400, height: 300)
+let canvas = Canvas(width: 1400, height: 900)
 
-/*:
- ## Add your code below
- 
- Be sure to write human-readable code.
- 
- Use whitespace and comments as appropriate.
- */
-// Replace this comment with your first comment – what is the goal of the code you're about to write?
+canvas.defaultBorderWidth = 7
+
+for x in stride(from: 25, through: 1375, by: 50){
+    for y in stride(from:1375, through: 25, by: -50){
+        //color.white
+        canvas.fillColor = Color.white
+        canvas.borderColor = Color.blue
+        canvas.drawEllipse(centreX: x, centreY: y, width: 25, height: 25)
+        
+        
+        let randomvalue = random(from: 1, toButNotIncluding: 5)
+        
+        // Make the black circle be further down
+        if randomvalue == 1 {
+            canvas.fillColor = Color.init(hue: 250, saturation: 100, brightness: 100, alpha: 100)
+            canvas.drawRoundedRectangle(centreX: x, centreY: y - 15, width: 25, height: 25)
+        } else if  randomvalue == 2 {
+            // Make the black circle be further up
+            canvas.fillColor = Color.init(hue: 150, saturation: 100, brightness: 100, alpha: 100)
+             canvas.drawRectangle(centreX: x, centreY: y + 15, width: 25, height: 25)
+        
+        } else if  randomvalue == 3 {
+            // Make the black circle be further left
+            canvas.fillColor = Color.init(hue: 90, saturation: 50, brightness: 100, alpha: 100)
+            canvas.drawRectangle(centreX: x - 15, centreY: y, width: 25, height: 25)
+            
+    
+        } else {
+            // Make the black circle be further right
+            canvas.fillColor = Color.init(hue: 200, saturation: 50, brightness: 100, alpha: 100)
+            canvas.drawRectangle(centreX: x + 15, centreY: y, width: 25, height: 25)
+            
+        }
+        
+        
+        
+    }
+    
+}
 
 
+canvas.copyToClipboard()
 
 /*:
  ## Use source control
